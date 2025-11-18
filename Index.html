@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="John Makowani's Portfolio - Information Systems and Technology Student">
+    <title>Login - John Makowani Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>Welcome</h1>
+                <p>John Makowani's Portfolio</p>
+                <p class="course-info">Information Systems and Technology</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <span class="error-message" id="usernameError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Remember Me</label>
+                </div>
+                
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            
+            <div class="login-info">
+                <p>Student ID: BIT18213582</p>
+                <p>Contact: makowanijohn@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+            
+            // Clear previous errors
+            usernameError.textContent = '';
+            passwordError.textContent = '';
+            
+            let isValid = true;
+            
+            // Validate username
+            if (username.length === 0) {
+                usernameError.textContent = 'Username is required';
+                isValid = false;
+            } else if (username.length < 4) {
+                usernameError.textContent = 'Username must be at least 4 characters long';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length === 0) {
+                passwordError.textContent = 'Password is required';
+                isValid = false;
+            } else if (password.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters long';
+                isValid = false;
+            }
+            
+            // If valid, redirect to home page
+            if (isValid) {
+                window.location.href = 'home.html';
+            }
+        });
+    </script>
+</body>
+</html>
